@@ -1,0 +1,671 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Aboreto', 'League Script';
+    scroll-behavior: smooth;
+
+
+}
+
+.backround {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(images/home.jpg);
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+
+}
+    .hero {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to top, rgba(158, 113, 72, 1), rgba(158, 113, 72, 0));
+    background-position: center;
+    background-size: cover;
+    padding: 35px 5%;
+    overflow: hidden;
+
+}
+
+.main-menu-container ul{
+    position: fixed;
+    width: 750px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    list-style: none; /*забираємо маркери із списку*/
+    margin: 0; /*забираємо зовнішні відступи*/
+    padding-left: 0; /*забираємо внутрішні відступи*/
+    background: rgba(158, 113, 72, 1); /*задаємо фон полоски меню*/
+    height: 75px;
+    border-radius: 50px;
+    align-items: center;
+    z-index: 49;
+    transform: translateX(-50%);
+    left: 50%;
+
+
+
+
+}
+.main-menu-container a {
+    text-decoration: none; /*забираємо підкреслювання з гіперпосилань*/
+    background: rgba(158, 113, 72, 1); /*додаємо фон пунктам меню*/
+    color: #fff; /*змінюємо колір тесту гіперпосилань/пунктів меню*/
+    padding:0px 15px; /*додаємо відступи між елементами меню*/
+    line-height: 75px; /*вирівнюємо меню по вертикалі*/
+    display: block; 
+    min-width: 150px;  /*Задаємо мінімальну ширину елементам головного меню*/     
+    -moz-transition: all 0.3s 0.01s ease; /*додаємо плавний перехід*/
+    -o-transition: all 0.3s 0.01s ease;
+    -webkit-transition: all 0.3s 0.01s ease;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: center;
+}
+.main-menu-container a:hover {
+    background: rgba(232, 197, 165, 0.5) /*додаємо ефект зміни фону пунктів меню при наведенні*/
+}
+.main-menu-container li {
+    position: relative; /*задаємо поцицію батьківському елементу для позиціонування нащадків*/
+}
+/*Стилі для прихованого випадаючого меню*/
+.main-menu-container li > ul {
+    position: absolute; /*задаємо поцицію нащадка*/
+    top: 75px; /*відступ зверху від батьківського елементу*/
+    display: none; /*"ховаємо" наше підменю*/
+ }
+ /*Робимо приховану частину меню видимою*/
+.main-menu-container li:hover > ul {
+    display: block; 
+    width: 250px;  /*Задаємо ширину випадаючого меню*/     
+}
+.mobile-menu-container {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .main-menu-container {
+        display: none;
+    }
+
+    .mobile-menu-container { /*------------*/
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 19px;
+        top: 50px;
+        background-color: rgba(158, 113, 72, 1);
+        right: 50px;
+        height: 75px;
+        width: 75px;
+        z-index: 9999999;
+        border-radius: 50px;
+    }
+
+    .mobile-menu__btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 30px;
+      cursor: pointer;
+      transition: .4s;
+        Salign-items: flex-end;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin-top: 5px;
+        padding: 0 5px 0 5px;
+    }
+
+    .mobile-menu__icon {
+      display: block;
+      position: relative;
+      background: white;
+      width: 90%;
+      height: 4px;
+      transition: .4s;
+    }
+
+    .mobile-menu__icon::after, .mobile-menu__icon::before {
+      content: "";
+      display: block;
+      position: absolute;
+      background: white;
+      width: 100%;
+      height: 4px;
+      transition: .4s;
+    }
+    .mobile-menu__icon::after {
+      top: 8px;
+    }
+    .mobile-menu__icon::before {
+      top: -8px;
+    }
+    .mobile-menu__container {
+      position: fixed;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 0px;
+      left: 0;
+      right: 0;
+      z-index: -1;
+      height: 0;
+      opacity: 1;
+      transition: .5s;
+      overflow: hidden;
+      background-color: rgba(158, 113, 72, 1);
+    }
+    .mobile-menu__list {
+      transition: .5s;
+      list-style: none;
+      padding-left: 0;
+      margin-top: -50px;
+    }
+    .mobile-menu__item {
+      font-size: 26px;
+      padding-bottom: 15px;
+    }
+    .mobile-menu__link {
+      text-decoration: none;
+      color: #fff;
+    }
+    .mobile-menu__checkbox {
+      display: none;
+    }
+    .mobile-menu__checkbox:checked ~ .mobile-menu__nav {
+      opacity: 1;
+    }
+    .mobile-menu__checkbox:checked ~ .mobile-menu__container {
+      height: 100%;
+    }
+    .mobile-menu__checkbox:checked ~ .mobile-menu__btn .mobile-menu__icon {
+      background: transparent;
+    }
+    .mobile-menu__checkbox:checked ~ .mobile-menu__btn .mobile-menu__icon::before, .mobile-menu__checkbox:checked ~ .mobile-menu__btn .mobile-menu__icon::after {
+      top: 0;
+    }
+    .mobile-menu__checkbox:checked ~ .mobile-menu__btn .mobile-menu__icon::after {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+    .mobile-menu__checkbox:checked ~ .mobile-menu__btn .mobile-menu__icon::before {
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+    }
+    h1 {
+        margin-top: 50px;
+    }
+
+}
+.mobile-menu-container {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .main-menu-container {
+        display: none;
+    }
+
+    .mobile-menu-container {
+        display: block;
+    }
+
+    .mobile-menu__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mobile-menu__link {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        padding: 10px 20px;
+        background-color: rgba(158, 113, 72, 1);
+    }
+
+    .mobile-menu__link:hover {
+        background-color: rgba(232, 197, 165, 0.5);
+    }
+
+    .mobile-submenu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: none;
+        background-color: rgba(158, 113, 72, 1);
+    }
+
+    .mobile-submenu__link {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        padding: 10px 20px;
+    }
+
+    .mobile-submenu__link:hover {
+        background-color: rgba(232, 197, 165, 0.5);
+    }
+
+    .submenu__checkbox {
+        display: none;
+    }
+
+    .submenu__checkbox:checked ~ .mobile-submenu {
+        display: block; /* Відображаємо підменю, якщо чекбокс активний */
+    }
+
+    .barista-toggle {
+        cursor: pointer;
+    }
+}
+
+
+.hero-text {
+    margin: 10% 50px;
+    display: grid;
+    justify-content: center;
+    color: white;
+    font-size: 90px;
+    font-family: "League Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+    transform: translateY(50px);
+    word-wrap: break-word;
+    align-items: center;
+    text-align: center;
+}
+@media (max-width: 375px) {
+    .hero-text{
+        font-size: 75px;
+    }
+}
+.about-us {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, rgba(158, 113, 72, 1) 70%, rgba(232, 197, 165, 0.5));
+    background-position: center;
+    background-size: cover;
+    padding: 35px 5%;
+    overflow: hidden;
+
+}
+
+.about-us h2 {
+    display: flex;
+    font-size: 36px;
+    margin: 110px 5%;
+    justify-content: center;
+    color: white;
+}
+
+.about-us img {
+    width: 330px;
+    height: 80vh;
+    object-fit: cover;
+    border-radius: 35px;
+
+}
+
+
+.about-us p {
+    display: flex;
+    font-size: 16px;
+    max-width: 60%;
+    color: white;
+    padding: 20px;
+}
+
+.about-us1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+@media (max-width: 768px){
+    .about-us1 {
+        flex-direction: column;
+    }
+    .about-us p {
+        max-width: 90%;
+    }
+}
+@media (max-width: 425px) {
+    .about-us img {
+        width: 90%;
+        height: 50vh;
+    }
+}
+
+.menu {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, rgba(232, 197, 165, 0.5), rgba(232, 197, 165, 1) 70%, rgba(89, 31, 11, 0.7));
+    background-position: center;
+    background-size: cover;
+    padding: 35px 5%;
+    overflow: hidden;
+
+}
+.menu h2 {
+    display: flex;
+    font-size: 36px;
+    margin: 110px 5%;
+    justify-content: center;
+    color: black;
+
+}
+
+.menu img {
+    width: 330px;
+    height: 80vh;
+    object-fit: cover;
+    border-radius: 35px;
+
+}
+.menu1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center
+}
+.coffee {
+    font-size: 16px;
+}
+
+.in {
+    font-size: 10px;
+}
+.menu2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .menu1 {
+        flex-direction: column;
+    }
+    .menu img {
+        display: none;
+    }
+}
+
+.barista {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, rgba(89, 31, 11, 0.7), rgba(89, 31, 11, 1) 90%);
+    background-position: center;
+    background-size: cover;
+    padding: 35px 5%;
+    overflow: hidden;
+}
+
+
+.text {
+    display: flex;
+    font-size: 36px;
+    margin: 110px 5%;
+    justify-content: center;
+    color: white;
+}
+
+.barista1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    width: 330px;
+    background-color: rgba(231, 220, 214, 1);
+    border-radius: 35px;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    margin: 15px;
+    text-align: center;
+
+
+}
+.card p {
+    display: flex;
+    flex-direction: column;
+}
+
+.price {
+    width: 80%;
+    height: 50px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 30px;
+    justify-content: center;
+}
+.price:hover {
+    background-color: rgba(158, 113, 72, 1);
+    color: white;
+}
+.price p {
+    margin: 15px;
+}
+.line {
+    height: 1px;
+    width: 80%;
+    color: lightgray;
+}
+.Basic-Barita {
+    width: 80%;
+    height: 50px;
+
+}
+
+.card img {
+    position: relative;
+    display: flex;
+    width: 85%;
+    height: 350px;
+    border-radius: 35px;
+    object-fit: cover;
+    top: 25px;
+
+
+}
+
+
+.card h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    margin: 58px;
+
+}
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 620px;
+    width: 100%; 
+    position: relative;
+    overflow: hidden;
+
+}
+
+
+.video-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 620px;
+    overflow: hidden;
+
+}
+video {
+    object-fit: cover;
+    overflow: hidden;
+    display: flex;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    min-height: 620px;
+    z-index: 0;
+
+}
+
+ 
+.form1 {
+    width: 420px;
+    color: white ;
+    z-index: 10;
+    position: absolute ;
+    border-radius: 30px;
+    padding: 30px;
+    background: transparent;
+    border: 2px solid rgb(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    max-height: 100%;
+    overflow: hidden;
+
+
+}
+.form1 h1 {
+    font-size: 36px;
+    text-align: center;
+}
+.form1 .input-box{
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+    position: relative;
+}
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgb(255, 255, 255, .2);
+    border-radius: 30px;
+    font-size: 16px;
+    color: white;
+    padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder {
+    color: white;
+
+}
+.textarea-box textarea::placeholder {
+    color: white;
+
+}
+.input-box i {
+    position: absolute;
+    right: 20px;     
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px ;
+}
+
+.form .btn {
+    width: 100%;
+    height: 45px;
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+
+}
+.form .btn:hover {
+    background-color: rgba(158, 113, 72, 1);
+    color: white;
+}
+.form1 .textarea-box{
+    width: 100%;
+    height: 150px;
+    margin: 30px 0;
+    position: relative;
+    resize: none;
+}
+.textarea-box textarea {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgb(255, 255, 255, .2);
+    border-radius: 30px;
+    font-size: 16px;
+    color: white;
+    padding: 20px 45px 20px 20px;
+    resize: none;
+
+}
+.textarea-box p {
+    display: flex;
+
+}
+
+.textarea-box i {
+    display: flex;
+}
+@media (max-width: 520px) {
+    .form1 {
+        width: 85%;
+    }
+    .form1 h1 {
+        font-size: 24px;
+    }
+}
+.contacts {
+    width: 100%;
+    display: flex;
+    background-color: rgba(153, 153, 153, 1);
+    justify-content: center;
+    text-align: center;
+
+
+}
+.contacts1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.icon {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    margin: 50px;
+}
+.contacts2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 30px;
+}
+@media (max-width: 830px){
+    .contacts {
+    flex-direction: column;
+    overflow: hidden;
+    }
+    .icon {
+    margin: 20px;
+    }
+}
